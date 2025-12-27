@@ -1,11 +1,22 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class MatPage extends StatelessWidget {
+class MatPage extends StatefulWidget {
   const MatPage({super.key});
 
   @override
+  State<MatPage> createState() =>
+      _MatPageState();
+}
+
+class _MatPageState
+    extends State<MatPage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
+
+
+  @override
   Widget build(BuildContext context) {
+    double result =0;
     final border = OutlineInputBorder(
       borderSide: BorderSide(width: 1.0, style: BorderStyle.solid),
       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -25,9 +36,9 @@ class MatPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            const Text(
-              '00.00',
-              style: TextStyle(
+            Text(
+              result.toString(),
+              style: const TextStyle(
                 fontSize: 45,
                 fontWeight: .bold,
                 color: Colors.white,
@@ -36,6 +47,7 @@ class MatPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
+                controller: textEditingController,
                 style: const TextStyle(color: Colors.black),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 decoration: InputDecoration(
@@ -54,9 +66,7 @@ class MatPage extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
               child: ElevatedButton(
                 onPressed: () {
-                  if (kDebugMode) {
-                    print("Button again Pressed");
-                  }
+                  result = double.parse(textEditingController.text)*81;
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.black,
