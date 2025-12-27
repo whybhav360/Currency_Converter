@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+
+import 'cuper_page.dart';
 import 'mat_page.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +25,17 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: MatPage()
+    );
+  }
+}
+
+class MyCupertinoApp extends StatelessWidget {
+  const MyCupertinoApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CupertinoApp(
+      home: CuperPage(),
     );
   }
 }
