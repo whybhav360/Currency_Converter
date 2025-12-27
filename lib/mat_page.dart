@@ -13,7 +13,6 @@ class _MatPageState extends State<MatPage> {
 
   @override
   Widget build(BuildContext context) {
-    double result = 0;
     final border = OutlineInputBorder(
       borderSide: BorderSide(width: 1.0, style: BorderStyle.solid),
       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -34,7 +33,7 @@ class _MatPageState extends State<MatPage> {
           mainAxisAlignment: .center,
           children: [
             Text(
-              result.toString(),
+              'INR ${result != 0 ? result.toStringAsFixed(3) : result.toStringAsFixed(0)}',
               style: const TextStyle(
                 fontSize: 45,
                 fontWeight: .bold,
@@ -63,7 +62,9 @@ class _MatPageState extends State<MatPage> {
               padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
               child: ElevatedButton(
                 onPressed: () {
-                  result = double.parse(textEditingController.text) * 81;
+                  setState(() {
+                    result = double.parse(textEditingController.text) * 81;
+                  });
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.black,
